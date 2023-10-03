@@ -1,0 +1,49 @@
+# Arquivos de configuração e ambiente
+*.pyc
+*.pyo
+__pycache__/
+.env
+
+# Arquivos de banco de dados
+*.sqlite3
+
+# Arquivos gerados pelo sistema
+__init__.pyc
+__init__.pyo
+db.sqlite3
+*.log
+*.pot
+*.pyc
+
+# Arquivos de mídia
+media/
+
+# Dependências (use um gerenciador de pacotes, como pipenv ou requirements.txt)
+*.egg-info/
+venv/
+env/
+env1/
+env2/
+
+# Arquivos de ambiente
+.env
+
+# Diretórios de ambiente virtual
+env/
+ENV/
+
+# Arquivos de compilação de código Python
+*.pyc
+
+# Logs e saídas
+*.log
+*.pot
+*.pyc
+
+# Arquivos de configuração específicos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de caches de IDEs
+.idea/
+.vscode/

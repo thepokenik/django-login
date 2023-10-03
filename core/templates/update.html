@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Formulário</title>
+</head>
+<body>
+    <main>
+        <section>
+           <span>Usuário: {{ pessoa.nome }} Email: {{ pessoa.email }}</span>
+        </section>
+        <fieldset>
+            <legend>Formulário</legend>
+                <form action="{% url 'atualizar' pessoa.id %}" method="post">
+                    {% csrf_token %}
+                    <div class="inp">
+                        <input type="text" name="name" id="" placeholder="Editar nome:" value="{{pessoa.nome}}">
+                    </div>
+                    <div class="inp">
+                        <input type="email" name="email" id="" placeholder="E-mail:" value="{{pessoa.email}}">
+                    </div>
+                    <div class="inp">
+                        <input type="password" name="password" id="" placeholder="Senha" value="{{pessoa.senha}}">
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Salvar!</button>
+                    </div>
+                </form>
+        </fieldset>
+    </main>
+    <script src="{% static 'app.js' %}"></script>   
+</body>
+</html>

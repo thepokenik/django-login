@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Formulário</title>
+</head>
+<body>
+    <main>
+        <section>
+            <ul>
+                {% for pessoa in pessoas %}
+                <li> {{ pessoa.id }} - {{ pessoa.nome }} <a href="{% url 'editar' pessoa.id %}">Editar</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        <fieldset>
+            <legend>Formulário</legend>
+                <form action="{% url 'cadastro' %}" method="post">
+                    {% csrf_token %}
+                    <div class="inp">
+                        <input type="text" name="name" id="" placeholder="Nome:">
+                    </div>
+                    <div class="inp">
+                        <input type="email" name="email" id="" placeholder="E-mail:">
+                    </div>
+                    <div class="inp">
+                        <input type="password" name="password" id="" placeholder="Senha">
+                    </div>
+                    <div class="btn">
+                        <button type="submit">Cadastrar!</button>
+                    </div>
+                </form>
+        </fieldset>
+    </main>
+    <script src="{% static 'app.js' %}"></script>   
+</body>
+</html>
