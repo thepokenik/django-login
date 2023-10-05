@@ -1,4 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect 
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Pessoa
 
 def home(request):
@@ -27,3 +30,18 @@ def atualizar(request, id):
     pessoa.senha = vsenha
     pessoa.save()
     return redirect(home)
+
+def login(request):
+    if request.method == 'POST':
+        name = request.POST['name']
+        password = request.POST['password']
+        user = authenticate(request, username=name, password=password)
+        print("Name:", name)
+        print("Senha:", password)
+        print(user)
+        if user:
+            auth_login(request, user)
+            return render(request, 'login.html')
+        else:
+            messages.error(request, 'Credenciais inválidas')
+    return render(request, 'login.html')
