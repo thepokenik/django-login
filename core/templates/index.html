@@ -4,36 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
     <title>Formulário</title>
 </head>
 <body>
     <main>
-        <section>
-            <ul>
-                {% for pessoa in pessoas %}
-                <li> {{ pessoa.id }} - {{ pessoa.nome }} <a href="{% url 'editar' pessoa.id %}">Editar</a></li>
-                {% endfor %}
-            </ul>
-        </section>
-        <fieldset>
-            <legend>Formulário</legend>
-                <form action="{% url 'cadastro' %}" method="post">
-                    {% csrf_token %}
-                    <div class="inp">
-                        <input type="text" name="name" id="" placeholder="Nome:">
-                    </div>
-                    <div class="inp">
-                        <input type="email" name="email" id="" placeholder="E-mail:">
-                    </div>
-                    <div class="inp">
-                        <input type="password" name="password" id="" placeholder="Senha">
-                    </div>
-                    <div class="btn">
-                        <button type="submit">Cadastrar!</button>
-                    </div>
-                </form>
-        </fieldset>
+        <div class="form-box">
+            <form action="{% url 'cadastro' %}" method="post" class="form">
+                {% csrf_token %}
+                <span class="title">Faça seu Cadastro!</span>
+                <span class="subtitle">Crie uma conta de graça com seu email.</span>
+                <div class="form-container">
+                    <input type="text" name="name" id="" placeholder="Nome:" class="input">
+                    <input type="email" name="email" id="" placeholder="E-mail:" class="input">
+                    <input type="password" name="password" id="" placeholder="Senha" class="input">
+                </div>
+                <button type="submit">Cadastrar!</button>
+            </form>
+            <div class="form-section">
+                <p>Possui uma conta? <a href="{% url 'login' %}">Entre</a> </p>
+            </div>
+        </div>
     </main>
     <script src="{% static 'app.js' %}"></script>   
 </body>
