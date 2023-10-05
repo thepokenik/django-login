@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+    <title>Formulário</title>
+</head>
+<body>
+    <main>
+        <div class="form-box">
+            <form action="{% url 'login' %}" method="post" class="form">
+                {% csrf_token %}
+                <div class="form-container">
+                    <input type="text" name="name" id="name" placeholder="Nome:" class="input">
+                    <input type="password" name="password" id="password" placeholder="Senha" class="input">
+                </div>
+                <button type="submit">Entrar!</button>
+            </form>
+        </div>
+    </main>
+    <script src="{% static 'app.js' %}"></script>   
+</body>
+</html>
